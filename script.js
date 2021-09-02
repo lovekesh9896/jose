@@ -87,7 +87,7 @@ function addInter() {
 	function touching(entries) {
 		console.log(entries[0]);
 		if (entries[0].isIntersecting && entries[0].intersectionRatio < 0.08) {
-			gsap.to(window, { duration: 1, scrollTo: "#section2-container" });
+			gsap.to(window, { duration: 1.5, scrollTo: "#section2-container" });
 		}
 	}
 }
