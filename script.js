@@ -76,8 +76,30 @@ const scene = new ScrollMagic.Scene({
 
 console.log(scene);
 let header = document.getElementsByTagName("header")[0];
+let options = {
+	root: null,
+	rootMargin: "100px",
+	threshild: 0.05,
+};
+function addInter() {
+	let observer = new IntersectionObserver(touching, options);
+	observer.observe(document.getElementById("section2-container"));
+	function touching(entries) {
+		console.log(entries[0]);
+		if (entries[0].isIntersecting && entries[0].intersectionRatio < 0.08) {
+			gsap.to(window, { duration: 1, scrollTo: "#section2-container" });
+		}
+	}
+}
+addInter();
+// window.onscroll = function () {
+// 	console.log("scrolled", scrollComplete);
+// 	if (scrollComplete) {
+// 		gsap.to(window, { duration: 1, scrollTo: "#section2-container" });
+// 	}
+// };
+
 function updatePercentage() {
-	//percent.innerHTML = (tl.progress() *100 ).toFixed();
 	tl.progress();
 	if (tl.progress() > 0.7) {
 		if (header.style.position != "fixed") {
@@ -86,6 +108,11 @@ function updatePercentage() {
 			tl2.to("header", 1, { top: 0 });
 		}
 	}
+	// if (tl.progress() == 1) {
+	// 	scrollComplete = true;
+	// } else {
+	// 	scrollComplete = false;
+	// }
 }
 
 // ball1 = green
@@ -129,10 +156,15 @@ window.onload = function () {
 				tl1.to(".fade", 1, { opacity: 0 });
 				tl1.to(".ball", 0.4, { width: 40 });
 				console.log(shreaderPoints);
-				tl1.to("#ball7", 0.8, {
-					top: shreaderPoints.top + 15,
-					left: shreaderPoints.left + 15,
-				});
+				// tl1.to("#ball7", 0.8, {
+				// 	y: shreaderPoints.y + 15,
+				// 	x: shreaderPoints.x + 15,
+				// });
+				setTimeout(() => {
+					console.log(
+						document.getElementById("ball7").getBoundingClientRect()
+					);
+				}, 2000);
 
 				tl1.to("#greeting", 0.4, { opacity: 1 });
 				tl1.to("#message-text", 0.4, { opacity: 1 }, "-=.4");

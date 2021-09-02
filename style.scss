@@ -9,6 +9,7 @@ body {
 	width: 100vw;
 	overflow-x: hidden;
 	font-size: 18px;
+	scroll-behavior: smooth;
 }
 
 header {
@@ -297,6 +298,10 @@ input {
 }
 
 /* -section 2 */
+#section2-container {
+	padding-top: 80px;
+}
+
 .section2 {
 	padding: 40px 10vw;
 	width: 70vw;
@@ -325,6 +330,7 @@ input {
 	text-decoration: none;
 	color: black;
 	cursor: pointer;
+	font-weight: 100;
 }
 
 .section2 hr {
