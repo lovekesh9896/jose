@@ -121,7 +121,8 @@ function updatePercentage() {
 // ball4 = blue
 // ball5 = red
 // ball6 = grey
-
+let a = document.getElementById("greeting");
+let ap = a.getBoundingClientRect();
 let clicked = 0;
 window.onload = function () {
 	function addClickToTearMe() {
@@ -155,20 +156,18 @@ window.onload = function () {
 				tl1.to("#ball7", 0.1, { opacity: 1 });
 				tl1.to(".fade", 1, { opacity: 0 });
 				tl1.to(".ball", 0.4, { width: 40 });
-				console.log(shreaderPoints);
-				// tl1.to("#ball7", 0.8, {
-				// 	y: shreaderPoints.y + 15,
-				// 	x: shreaderPoints.x + 15,
-				// });
-				setTimeout(() => {
-					console.log(
-						document.getElementById("ball7").getBoundingClientRect()
-					);
-				}, 2000);
+
+				console.log(ap);
+				tl1.to("#ball7", 0.8, {
+					top: ap.top,
+					left: ap.left - 45,
+				});
 
 				tl1.to("#greeting", 0.4, { opacity: 1 });
 				tl1.to("#message-text", 0.4, { opacity: 1 }, "-=.4");
 				tl1.to("#user-name", 0.4, { opacity: 1 }, "-=.8");
+				document.getElementById("user-name").disabled = false;
+				document.getElementById("message-text").disabled = false;
 				document.getElementById("message-text").focus();
 			} else {
 				let data = {
