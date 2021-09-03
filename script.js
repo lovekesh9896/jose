@@ -121,10 +121,11 @@ function updatePercentage() {
 // ball4 = blue
 // ball5 = red
 // ball6 = grey
-let a = document.getElementById("greeting");
-let ap = a.getBoundingClientRect();
+
 let clicked = 0;
 window.onload = function () {
+	let a = document.getElementById("greeting");
+	let ap = a.getBoundingClientRect();
 	function addClickToTearMe() {
 		let btn = document.getElementById("hitme");
 		let shreaderFront =
@@ -159,7 +160,7 @@ window.onload = function () {
 
 				console.log(ap);
 				tl1.to("#ball7", 0.8, {
-					top: ap.top,
+					top: ap.top - 200 + 6,
 					left: ap.left - 45,
 				});
 
